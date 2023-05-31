@@ -1,0 +1,40 @@
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-5">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+                
+            <div class="card-body p-md-5 mx-md-4">
+              
+           <h3 class="text-center">  Upload file</h3>
+            <br>
+            <form (ngSubmit)="upload(form)" #form="ngForm">
+              <div class="form-group text-center">
+              <select [(ngModel)]="selectedOption" id="selectedOption" required name="selectedOption" >
+                <option value="">Select an option</option>
+                <option *ngFor="let option of db">{{option}}</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <br>
+            <div class="form-group text-center "  *ngIf="selectedOption==='other'">
+              <input type="text"  required [(ngModel)]="customValue" name="customValue" (change)="onDropdownchange($event)" >
+            </div>
+            <br>
+            <div class="form-group text-center">
+              <input (change)="this.onFilechange($event)" class="form-control" type="file" id="formFile" name="file" required>
+              </div>
+              <div class="text-center">
+              <button   [disabled]="!form.valid" type="submit" class="btn btn-primary mt-3">Upload</button> 
+            </div>   
+             </form>
+             <!-- (click)="this.upload()" -->
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+</div>
+</section>
+
